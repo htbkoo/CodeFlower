@@ -99,6 +99,7 @@ CodeFlower.prototype.update = function (json) {
         })
         .call(this.force.drag)
         .on("click", this.click.bind(this))
+        .on("dblclick", this.dblclick.bind(this))
         .on("mouseover", this.mouseover.bind(this))
         .on("mouseout", this.mouseout.bind(this));
 
@@ -142,6 +143,10 @@ CodeFlower.prototype.click = function (d) {
         d._children = null;
     }
     this.update();
+};
+
+CodeFlower.prototype.dblclick = function (d) {
+    window.open('https://www.google.com/search?q=' + d.name, '_blank');
 };
 
 CodeFlower.prototype.mouseover = function (d) {
