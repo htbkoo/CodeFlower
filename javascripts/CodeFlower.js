@@ -38,6 +38,7 @@ CodeFlower.prototype.update = function (json) {
 
     // remove existing text (will readd it afterwards to be sure it's on top)
     this.svg.selectAll("text").remove();
+    this.svg.selectAll("text.textOnNode").remove();
 
     // Restart the force layout
     this.force
@@ -112,6 +113,29 @@ CodeFlower.prototype.update = function (json) {
         .attr('dx', 0)
         .attr('text-anchor', 'middle');
 
+    this.textOnNode = this.svg
+        .selectAll("text.textOnNode")
+        .data(nodes)
+        .text(function (d) {
+            return d.name
+        });
+
+    this.textOnNode
+        .enter()
+        .append('svg:text')
+        .text(function (d) {
+            return d.name
+        })
+        .attr("class", "textOnNode")
+        .style("font-size", "10px")
+        .style("text-anchor", "middle")
+        .style("fill", "#555")
+        .style("font-family", "Arial");
+
+    this.textOnNode
+        .exit()
+        .remove();
+
     return this;
 };
 
@@ -178,6 +202,14 @@ CodeFlower.prototype.tick = function () {
     this.node.attr("transform", function (d) {
         return "translate(" + Math.max(5, Math.min(w - 5, d.x)) + "," + Math.max(5, Math.min(h - 5, d.y)) + ")";
     });
+
+    this.textOnNode
+        .attr("x", function (d) {
+            return d.x;
+        })
+        .attr("y", function (d) {
+            return d.y - 10;
+        });
 };
 
 CodeFlower.prototype.cleanup = function () {
