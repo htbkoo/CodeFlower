@@ -115,7 +115,9 @@ CodeFlower.prototype.update = function (json) {
 
     this.textOnNode = this.svg
         .selectAll("text.textOnNode")
-        .data(nodes)
+        .data(nodes, function (d) {
+            return d.name
+        })
         .text(function (d) {
             return d.name
         });
@@ -126,7 +128,10 @@ CodeFlower.prototype.update = function (json) {
         .text(function (d) {
             return d.name
         })
-        .attr("class", "textOnNode")
+        .attr('class', function (d) {
+            console.log(asCssClass(d));
+            return "textOnNode ".concat(d ? asCssClass(d) : "");
+        })
         .style("font-size", "10px")
         .style("text-anchor", "middle")
         .style("fill", "#555")
@@ -177,10 +182,12 @@ CodeFlower.prototype.mouseover = function (d) {
     this.text.attr('transform', 'translate(' + d.x + ',' + (d.y - 5 - (d.children ? 3.5 : Math.sqrt(d.size) / 2)) + ')')
         .text(d.name + "(" + d.size + ")")
         .style('display', null);
+    this.svg.select('.' + asCssClass(d)).style('display', 'none');
 };
 
-CodeFlower.prototype.mouseout = function () {
+CodeFlower.prototype.mouseout = function (d) {
     this.text.style('display', 'none');
+    this.svg.select('.' + asCssClass(d)).style('display', null);
 };
 
 CodeFlower.prototype.tick = function () {
@@ -216,3 +223,7 @@ CodeFlower.prototype.cleanup = function () {
     this.update([]);
     this.force.stop();
 };
+
+function asCssClass(d) {
+    return d.name.replace(".", "");
+}
