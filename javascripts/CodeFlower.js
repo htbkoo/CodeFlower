@@ -81,10 +81,7 @@ CodeFlower.prototype.update = function (json) {
             return d._children ? 1 : 0;
         });
 
-    this.node.transition()
-        .attr("r", function (d) {
-            return d.children ? 3.5 : Math.pow(d.size, 2 / 5) || 1;
-        });
+    this.node.transition().attr("r", radiusFunction);
 
     // Enter any new nodes
     this.node.enter().append('svg:circle')
@@ -92,9 +89,7 @@ CodeFlower.prototype.update = function (json) {
         .classed('directory', function (d) {
             return (d._children || d.children) ? 1 : 0;
         })
-        .attr("r", function (d) {
-            return d.children ? 3.5 : Math.pow(d.size, 2 / 5) || 1;
-        })
+        .attr("r", radiusFunction)
         .style("fill", function color(d) {
             return "hsl(" + parseInt(360 / total * d.id, 10) + ",90%,70%)";
         })
@@ -226,4 +221,8 @@ CodeFlower.prototype.cleanup = function () {
 
 function asCssClass(d) {
     return d.name.replace(".", "");
+}
+
+function radiusFunction(d) {
+    return d.children ? 3.5 : Math.pow(d.size, 2 / 5) || 1;
 }
