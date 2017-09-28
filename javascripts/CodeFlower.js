@@ -136,7 +136,8 @@ CodeFlower.prototype.update = function (json) {
         .style("font-size", "10px")
         .style("text-anchor", "middle")
         .style("fill", "#555")
-        .style("font-family", "Arial");
+        .style("font-family", "Arial")
+        .on("click", this.dblclick.bind(this));
 
     this.textOnNode
         .exit()
