@@ -1,27 +1,27 @@
 circle.node {
-  cursor: pointer;
-  stroke: #000;
-  stroke-width: .5px;
+    cursor: pointer;
+    stroke: #000;
+    stroke-width: .5px;
 }
 
 circle.node.directory {
-  stroke: #9ecae1;
-  stroke-width: 2px;
+    stroke: #9ecae1;
+    stroke-width: 2px;
 }
 
 circle.node.collapsed {
-  stroke: #555;
-  stroke-width: 10px;
+    stroke: #555;
+    stroke-width: 10px;
 }
 
 .nodetext {
-  fill: #252929;
-  font-weight: bold;
-  text-shadow: 0 0 0.2em white;
+    fill: #252929;
+    font-weight: bold;
+    text-shadow: 0 0 0.2em white;
 }
 
 line.link {
-  fill: none;
-  stroke: #9ecae1;
-  stroke-width: 1.5px;
+    fill: none;
+    stroke: #9ecae1;
+    stroke-width: 1.5px;
 }
