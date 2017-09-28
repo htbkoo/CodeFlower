@@ -79,6 +79,9 @@ CodeFlower.prototype.update = function (json) {
         })
         .classed("collapsed", function (d) {
             return d._children ? 1 : 0;
+        })
+        .classed("collapsable", function (d) {
+            return d.children ? 1 : 0;
         });
 
     this.node.transition().attr("r", radiusFunction);
@@ -88,6 +91,12 @@ CodeFlower.prototype.update = function (json) {
         .attr("class", "node")
         .classed('directory', function (d) {
             return (d._children || d.children) ? 1 : 0;
+        })
+        .classed("collapsed", function (d) {
+            return d._children ? 1 : 0;
+        })
+        .classed("collapsable", function (d) {
+            return d.children ? 1 : 0;
         })
         .attr("r", radiusFunction)
         .style("fill", function color(d) {
