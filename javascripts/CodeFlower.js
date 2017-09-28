@@ -130,7 +130,6 @@ CodeFlower.prototype.update = function (json) {
             return d.name
         })
         .attr('class', function (d) {
-            console.log(asCssClass(d));
             return "textOnNode ".concat(d ? asCssClass(d) : "");
         })
         .style("font-size", "10px")
@@ -229,7 +228,7 @@ CodeFlower.prototype.cleanup = function () {
 };
 
 function asCssClass(d) {
-    return d.name.replace(".", "");
+    return "name" in d ? d.name.replace(".", "") : "";
 }
 
 function radiusFunction(d) {
