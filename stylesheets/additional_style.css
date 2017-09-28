@@ -11,6 +11,7 @@ circle.node.directory {
 
 circle.node.collapsed {
   stroke: #555;
+  stroke-width: 10px;
 }
 
 .nodetext {
