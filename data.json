@@ -268,6 +268,7 @@
             "language": "Javascript"
         }, {
             "name": "dummyTarget.js",
+            "url": "http://www.google.com",
             "size": 13,
             "language": "Javascript"
         }],

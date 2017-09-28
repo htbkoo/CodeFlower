@@ -177,7 +177,9 @@ CodeFlower.prototype.click = function (d) {
 };
 
 CodeFlower.prototype.dblclick = function (d) {
-    window.open('https://www.google.com/search?q=' + d.name, '_blank');
+    if ("url" in d) {
+        window.open(d.url, '_blank');
+    }
 };
 
 CodeFlower.prototype.mouseover = function (d) {
