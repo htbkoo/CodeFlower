@@ -233,5 +233,5 @@ function asCssClass(d) {
 }
 
 function radiusFunction(d) {
-    return d.children ? 3.5 : Math.pow(d.size, 2 / 5) || 1;
+    return d.children ? 10 : Math.pow(d.size, 2 / 5) || 1;
 }
