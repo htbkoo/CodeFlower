@@ -121,9 +121,6 @@ CodeFlower.prototype.update = function (json) {
         .selectAll("text.textOnNode")
         .data(nodes, function (d) {
             return d.name
-        })
-        .text(function (d) {
-            return d.name
         });
 
     this.textOnNode
