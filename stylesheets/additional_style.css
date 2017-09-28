@@ -14,6 +14,11 @@ circle.node.collapsed {
     stroke-width: 10px;
 }
 
+circle.node.collapsable {
+    stroke: #33B;
+    stroke-width: 5px;
+}
+
 .nodetext {
     fill: #252929;
     font-weight: bold;
